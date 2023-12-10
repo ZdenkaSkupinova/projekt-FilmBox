@@ -104,3 +104,45 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+
+const seznamFilmu = document.querySelector("#seznam-filmu")
+seznamFilmu.innerHTML = ""
+
+filmy.forEach((film) => {
+	const obsahFilmuHTML = `
+			<div class="col">
+				<div class="card">
+					<img
+						src="${film.plakat.url}"
+						width="${film.plakat.width}"
+						height="${film.plakat.height}"
+						class="card-img-top"
+						alt="plakát"
+					/>
+					<div class="card-body">
+						<h5 class="card-title">${film.nazev}</h5>
+						<p class="card-text">${film.ochutnavka}</p>
+						<a href="film.html#${film.id}" class="btn btn-primary">Přehrát</a>
+					</div>
+				</div>
+			</div>`
+	seznamFilmu.innerHTML += obsahFilmuHTML
+})
+
+/*
+
+
+Cyklem prohledejte pole filmy a film s id stejným jako hash (bez mřížky) si poznamenejte do proměnné. (Případně můžete také použít funkci find na poli.)
+
+
+
+
+
+// location.hash =  promenna 
+
+
+
+*/
+
+

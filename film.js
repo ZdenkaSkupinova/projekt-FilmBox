@@ -104,3 +104,100 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+
+const idFilmu = location.hash
+const vysledek = location.hash.slice(1)
+
+let film
+filmy.forEach((hledanyFilm) => {
+    if (hledanyFilm.id === vysledek) {
+        film = hledanyFilm
+
+
+const detailFilmu = document.querySelector("#detail-filmu img")
+detailFilmu.src = (film.plakat.url)
+
+const imgFluid = document.querySelector(".img-fluid")
+imgFluid.width = ("film.plakat.width")
+imgFluid.height = ("film.plakat.height")
+
+const cardTitle = document.querySelector(".card-title")
+cardTitle.textContent = (film.nazev)
+
+const cardText = document.querySelector(".card-text")	
+cardText.textContent = (film.popis)	
+
+
+    }
+})
+
+const premiera = document.querySelector("#premiera")
+
+const dnes = dayjs()
+const dateFormat = ("D. M. YYYY")
+const denPremiery = film.premiera
+
+
+const rozdil = denPremiery.diff(dayjs(), 'days') //háže mi to error : film.js:142  Uncaught TypeError: denPremiery.diff is not a function at film.js:142:28
+
+
+
+if (rozdil >= 1 ){
+    premiera.innerHTML += "<h1>Premiéra <strong>`${fil.premiera.format(dateFormat)}`</strong></h1>,<p>což je za`${rozdil}`dnů.</p>"
+}
+else if(rozdil <= -1 ){
+    premiera.innerHTML += "<h1>Premiéra <strong>`${denPremiery.format(dateFormat)}`</strong></h1>,<p>což bylo před`${rozdil}`dny.</p>"
+  }else{
+    premiera.innerHTML += "<h1>Premiéra <strong>`${denPremiery.format(dateFormat)}`</strong></h1>,<p> se koná dnes.</p>"
+  }
+
+
+
+const stars = (number) => {
+ number = [ 1, 2, 3, 4, 5]
+}
+
+const ratingStars = document.querySelector(".button-star")
+
+const button = querySelector("button")
+button.addEventListener('click', (e) => {
+	if(e === 'click') {
+		starInactive.classList.toggle("starActive")	
+	}	
+  })
+
+function executeRating(stars) {
+
+  const starActive = document.querySelector (".button-star")
+  starActive = classList.add("fas")
+  starActive = classList.remove("far")
+
+  const starInactive = document.querySelector(".button-star") 
+  starInactive = classList.add("far")
+  starInactive = classList.remove("fas")
+
+  const starsLength = stars.length
+  let i
+  stars.map((star) => {
+  star.onclick = () => {
+      i = stars.indexOf(star)
+      if (star.far === starInactive) {
+        for (i; i >= 0; --i) stars[i].fa-star.starActive 
+      } else {
+        for (i; i < starsLength; ++i) stars[i].fa-star.starInactive 
+      }
+    }
+})
+
+}
+executeRating(ratingStars)
+
+stars.addEventListener('mouseenter', (e) => {
+
+	if(e === 'mouseleave') {
+		starActive.classList.toggle("starInactive")	
+	}	
+  })
+
+
